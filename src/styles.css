@@ -1,0 +1,10 @@
+.over {
+    border-top: 2px solid blue !important;
+    /* margin-top: 45px !important;
+    transition: margin 0.3s ease; */
+  }
+  
+  .column.dragElem {
+    opacity: 0.4;
+  }
+  

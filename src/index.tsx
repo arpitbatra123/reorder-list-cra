@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import SortableListScratch from "./components/SortableListScratch";
 import SortableListLibrary from "./components/SortableListLibrary";
 
+import './styles.css'
+
 export const Index = (): JSX.Element => {
   return (
     <App>
@@ -32,4 +34,4 @@ root.render(
  * or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
  */
 // eslint-disable-next-line no-console
-reportWebVitals(console.log);
+reportWebVitals();

@@ -85,7 +85,6 @@ const SortableListLibrary = () => {
 
   const isItemSelected = (id: string) => checkedItems[id];
   const onCheckboxClick = (id: string) => {
-    debugger; // execution will pause here
     setCheckedItems((prevState) => ({
       ...prevState,
       [id]: !prevState[id],

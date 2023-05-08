@@ -54,7 +54,7 @@ interface CheckboxState {
 }
 
 const SortableListScratch = () => {
-  const dragSrc = useRef<EventTarget | null>(null);
+  const dragSrc = useRef<HTMLElement | null>(null);
 
   const [items, setItems] = useState(initItems);
 
@@ -94,15 +94,13 @@ const SortableListScratch = () => {
   const handleDragEnter = () => {};
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
+    console.log("Drag Over", e.currentTarget.innerText, dragSrc.current.innerText, e.currentTarget === dragSrc.current);
     e.preventDefault();
-    if (dragSrc.current === e.currentTarget) {
-      return;
-    }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect
     e.dataTransfer.dropEffect = "move";
 
-    e.currentTarget.classList.add("over");
+    e.currentTarget !== dragSrc.current  && e.currentTarget.classList.add("over");
 
     return false;
   };
@@ -118,7 +116,6 @@ const SortableListScratch = () => {
   ) => {
     const draggedItemId = e.dataTransfer.getData("text/plain");
     if (droppedElementId === draggedItemId) {
-      e.currentTarget.classList.remove("over");
       return false;
     }
 
@@ -137,6 +134,7 @@ const SortableListScratch = () => {
     }
 
     setItems(newItems);
+    e.currentTarget.classList.remove("over");
   };
 
   const handleDragEnd = (e: React.DragEvent<HTMLElement>) => {
